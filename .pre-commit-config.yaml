@@ -10,17 +10,11 @@ repos:
     hooks:
     - id: flake8
       stages: [commit]
-# -   repo: https://github.com/jazzband/pip-tools
-#     rev: 6.8.0
-#     hooks:
-#     - id: pip-compile
-#       entry: ./pip-compile.py
+
 -   repo: local
     hooks:
       - id: requirements
         name: requirements
-        # entry: bash -c 'venv/bin/pip3 freeze > requirements.txt; git add requirements.txt'
-        # entry: powershell -command '.\venv\Scripts\pip3 freeze > .\requirements.txt; git add requirements.txt'
         entry: ./.pre-commit-scripts/requirements.py
         language: system
         pass_filenames: false
