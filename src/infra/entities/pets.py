@@ -25,3 +25,12 @@ class Pets(Base):
 
     def __repr__(self):
         return f"Pets: [name={self.name!r}, specie={self.specie!r}, user_id={self.user_id}]"
+
+    def __eq__(self, other):
+        return (
+            self.id == other.id
+            and self.name == other.name
+            and self.specie == other.specie
+            and self.age == other.age
+            and self.user_id == other.user_id
+        )
