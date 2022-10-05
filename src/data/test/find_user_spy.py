@@ -1,6 +1,6 @@
 from typing import Dict, List
 from src.domain.models import Users
-from src.domain.test import mock_users
+from src.domain.test import mock_user
 
 
 class FindUserSpy:
@@ -20,7 +20,7 @@ class FindUserSpy:
         validate_entry = isinstance(user_id, int)
 
         if validate_entry:
-            response = [mock_users()]
+            response = [mock_user()]
 
         return {"Success": validate_entry, "Data": response}
 
@@ -35,7 +35,7 @@ class FindUserSpy:
         validate_entry = isinstance(name, str)
 
         if validate_entry:
-            response = [mock_users()]
+            response = [mock_user()]
 
         return {"Success": validate_entry, "Data": response}
 
@@ -52,6 +52,6 @@ class FindUserSpy:
         validate_entry = isinstance(user_id, int) and isinstance(name, str)
 
         if validate_entry:
-            response = [mock_users()]
+            response = [mock_user()]
 
         return {"Success": validate_entry, "Data": response}
