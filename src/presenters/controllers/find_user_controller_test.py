@@ -18,7 +18,7 @@ def test_handle():
         query={"user_id": faker.random_number(), "user_name": faker.word()}
     )
 
-    response = find_user_controller.handle(http_request)
+    response = find_user_controller.route(http_request)
 
     print(response)
 
@@ -45,7 +45,7 @@ def test_handler_no_query_param():
 
     http_request = HttpRequest()
 
-    response = find_user_controller.handle(http_request)
+    response = find_user_controller.route(http_request)
 
     print(response)
 

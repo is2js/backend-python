@@ -24,7 +24,7 @@ def test_handle():
     }
 
     http_request = HttpRequest(body=attributes)
-    response = register_pet_controller.handle(http_request)
+    response = register_pet_controller.route(http_request)
 
     print(response)
 
