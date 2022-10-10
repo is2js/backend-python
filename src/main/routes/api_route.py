@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from src.auth_jwt import token_creator, token_verify
 from src.main.adapter import flask_adapter
 from src.main.composer import (
     register_user_composer,
@@ -35,7 +36,7 @@ def register_user():
         }
         return jsonify({"data": message}), response.status_code
 
-    # Handing Errors
+    # Handling Errors
     return (
         jsonify(
             {
@@ -69,7 +70,7 @@ def register_pet():
         }
         return jsonify({"data": message}), response.status_code
 
-    # Handing Errors
+    # Handling Errors
     return (
         jsonify(
             {
@@ -158,3 +159,18 @@ def find_user():
         ),
         response.status_code,
     )
+
+
+@api_routes_bp.route("/secret", methods=["GET"])
+@token_verify
+def secret_route(token):
+
+    return jsonify({"data": token}), 200
+
+
+@api_routes_bp.route("/auth", methods=["POST"])
+def authorize_user():
+
+    token = token_creator.create(uid=12)
+
+    return jsonify({"token": token}), 200
