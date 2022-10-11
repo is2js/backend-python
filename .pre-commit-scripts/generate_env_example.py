@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import re
 from subprocess import call  # nosec
 from sys import platform
 
@@ -15,9 +16,11 @@ def main():
 
     if platform == "win32":
         # (Get-Content .\.env) -replace('=.*', '=') | Set-Content .env.example
-        # with open(dotenv_example, "w") as file_:
-        # call([f"(Get-Content {dotenv}) -replace('=.*', '=')"], stdout=file_)
-        pass
+        with open(dotenv, "r") as file_:
+            lines = file_.readlines()
+            with open(dotenv_example, "w") as file__:
+                for line in lines:
+                    file__.write(re.sub("=.*", "=", line))
 
     else:
         with open(dotenv_example, "w") as file_:
