@@ -1,10 +1,10 @@
+default_language_version:
+  python: python3.10
 repos:
-
 -   repo: https://github.com/ambv/black
     rev: stable
     hooks:
     - id: black
-      language_version: python3.10
       stages: [commit]
 
 -   repo: https://gitlab.com/pycqa/flake8
