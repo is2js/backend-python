@@ -1,10 +1,12 @@
 repos:
+
 -   repo: https://github.com/ambv/black
     rev: stable
     hooks:
     - id: black
       language_version: python3.10
       stages: [commit]
+
 -   repo: https://gitlab.com/pycqa/flake8
     rev: 3.7.9
     hooks:
@@ -34,7 +36,7 @@ repos:
     hooks:
       - id: env.example
         name: env.example
-        entry: ./.pre-commit-scripts/generate_env_example.py
+        entry: ./.pre-commit-scripts/dotenv_example_generator.py
         language: system
         pass_filenames: false
         stages: [commit]
