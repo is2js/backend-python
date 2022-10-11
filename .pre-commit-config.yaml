@@ -6,13 +6,11 @@ repos:
     hooks:
     - id: black
       stages: [commit]
-
 -   repo: https://gitlab.com/pycqa/flake8
     rev: 3.9.2
     hooks:
     - id: flake8
       stages: [commit]
-
 -   repo: local
     hooks:
       - id: requirements
@@ -21,7 +19,6 @@ repos:
         language: system
         pass_filenames: false
         stages: [commit]
-        
 -   repo: local
     hooks:
     - id: pytest
@@ -31,11 +28,10 @@ repos:
       always_run: true
       pass_filenames: false
       stages: [commit]
-
 -   repo: local
     hooks:
-      - id: env.example
-        name: env.example
+      - id: .env.example
+        name: .env.example
         entry: ./.pre-commit-scripts/dotenv_example_generator.py
         language: system
         pass_filenames: false
