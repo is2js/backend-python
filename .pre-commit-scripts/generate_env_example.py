@@ -1,8 +1,8 @@
 #!/usr/bin/env python
+
 import os
 import re
 from subprocess import call  # nosec
-from sys import platform
 
 
 def main():
@@ -14,18 +14,13 @@ def main():
         print(f"there is no {dotenv}")
         exit()
 
-    if platform == "win32":
-        # (Get-Content .\.env) -replace('=.*', '=') | Set-Content .env.example
-        with open(dotenv, "r") as file_:
-            lines = file_.readlines()
-            with open(dotenv_example, "w") as file__:
-                for line in lines:
-                    file__.write(re.sub("=.*", "=", line))
-
-    else:
-        with open(dotenv_example, "w") as file_:
-            # sed 's/=.*/=/' .env > .env.example
-            call(["sed", "'s/=.*/=/'", f"{dotenv}"], stdout=file_)
+    # (Get-Content .\.env) -replace('=.*', '=') | Set-Content .env.example
+    # sed 's/=.*/=/' .env > .env.example
+    with open(dotenv, "r") as file_:
+        lines = file_.readlines()
+        with open(dotenv_example, "w") as file__:
+            for line in lines:
+                file__.write(re.sub("=.*", "=", line))
 
     call(f"git add {dotenv_example}")  # nosec
 
