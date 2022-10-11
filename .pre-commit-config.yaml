@@ -29,3 +29,12 @@ repos:
       always_run: true
       pass_filenames: false
       stages: [commit]
+
+-   repo: local
+    hooks:
+      - id: env.example
+        name: env.example
+        entry: ./.pre-commit-scripts/generate_env_example.py
+        language: system
+        pass_filenames: false
+        stages: [commit]
